@@ -12,15 +12,24 @@ class SceneTitle {
         Render.fillTextUI(game.ctx, 'Erase Data', UI.title.textErase)
     }
 
-    static keyDown(event) {
+    static keyDown(game, key) {
 
     }
 
-    static keyUp(event) {
+    static keyUp(game, key) {
 
     }
 
-    static mouseUp(event) {
-
+    static mouseUp(game, pos, button) {
+        if (button === 0) {
+            if (game.menu === false) {
+                if (game.state === '') {
+                    if (pointInsideRectUI(pos, UI.title.buttonStart)) {
+                        game.scene = 'battle'
+                        game.state = 'start'
+                    }
+                }
+            }
+        }
     }
 }
