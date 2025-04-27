@@ -5,6 +5,26 @@
         <script>eruda.init()</script>
         <title>Web Survival</title>
         <style>
+            @font-face {
+                font-family: 'neodgm';
+                src: url('Font/neodgm.ttf');
+            }
+
+            body {
+                touch-action: none;
+                overscroll-behavior: none;
+            }
+
+            #screen {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                max-width: 98%;
+                max-height: 98%;
+            }
         </style>
     </head>
     <body>
@@ -14,11 +34,15 @@
         <script src="Script/UI.js"></script>
         <script src="Script/Const.js"></script>
         <script src="Script/Primitive.js"></script>
-        <script src="Script/Prototyps.js"></script>
+        <script src="Script/Prototype.js"></script>
+        <script src="Script/Field.js"></script>
+        <script src="Script/Player.js"></script>
         <script src="Script/GameHandler.js"></script>
         <script src="Script/Render.js"></script>
+
         <script src="Script/SceneTitle.js"></script>
         <script src="Script/SceneBattle.js"></script>
+        
         <script src="Script/Main.js"></script>
     </body>
 </html>
