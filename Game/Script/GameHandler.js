@@ -8,10 +8,11 @@ class Game {
         this.player = new Player()
 
         this.keyMap = {
-
+            'left': 'ArrowLeft', 'right': 'ArrowRIght', 'up': 'ArrowUp', 'down': 'ArrowDown', 'dash': ' ',
+            '1': '1', '2': '2', '3': '3', '4': '4', 'upgrade': 'r', 'confirm': 'Enter'
         }
         this.keyPressed = {
-
+            'left': false, 'right': false, 'up': false, 'down': false,
         }
 
         this.canvas = document.getElementById('screen')
@@ -43,6 +44,12 @@ class Game {
     keyDown(event) {
         let key = event.key
 
+        for (let k in this.keyPressed) {
+            if (key === this.keyMap[k]) {
+                this.keyPressed[k] = true
+            }
+        }
+
         if (this.scene === 'title') {
             SceneTitle.keyDown(this, key)
         } else if (this.scene === 'battle') {
@@ -52,6 +59,12 @@ class Game {
 
     keyUp(event) {
         let key = event.key
+
+        for (let k in this.keyPressed) {
+            if (key === this.keyMap[k]) {
+                this.keyPressed[k] = false
+            }
+        }
 
         if (this.scene === 'title') {
             SceneTitle.keyUp(this, key)
