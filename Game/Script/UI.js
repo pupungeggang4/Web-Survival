@@ -8,6 +8,16 @@ const UI = {
     },
 
     battle: {
+        buttonMenu: [1160, 40, 80, 80]
+    },
 
-    }
+    rewardWindow: {
+        rect: [120, 80, 1040, 640],
+        buttonConfirm: [560, 600, 160, 80],
+        textConfirm: [568, 624],
+    },
+
+    menu: {
+
+    },
 }

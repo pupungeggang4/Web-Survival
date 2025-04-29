@@ -11,8 +11,22 @@ class Render {
         ctx.fillStyle = 'black'
     }
 
+    static renderStartWindow(game) {
+        game.ctx.fillStyle = 'white'
+        Render.fillRectUI(game.ctx, UI.rewardWindow.rect)
+        Render.strokeRectUI(game.ctx, UI.rewardWindow.rect)
+        game.ctx.fillStyle = 'black'
+
+        Render.strokeRectUI(game.ctx, UI.rewardWindow.buttonConfirm)
+        Render.fillTextUI(game.ctx, 'Confirm', UI.rewardWindow.textConfirm)
+    }
+
     static strokeRectUI(ctx, rect) {
         ctx.strokeRect(rect[0], rect[1], rect[2], rect[3])
+    }
+
+    static fillRectUI(ctx, rect) {
+        ctx.fillRect(rect[0], rect[1], rect[2], rect[3])
     }
 
     static fillTextUI(ctx, text, pos) {
