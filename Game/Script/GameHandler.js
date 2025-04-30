@@ -5,11 +5,11 @@ class Game {
         this.scene = 'title'
         this.state = ''
         this.menu = false
-        this.player = new Player()
+        this.field = new Field()
 
         this.keyMap = {
-            'left': 'ArrowLeft', 'right': 'ArrowRIght', 'up': 'ArrowUp', 'down': 'ArrowDown', 'dash': ' ',
-            '1': '1', '2': '2', '3': '3', '4': '4', 'upgrade': 'r', 'confirm': 'Enter'
+            'left': 'ArrowLeft', 'right': 'ArrowRight', 'up': 'ArrowUp', 'down': 'ArrowDown', 'dash': ' ',
+            '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', 'upgrade': 'r', 'confirm': 'Enter'
         }
         this.keyPressed = {
             'left': false, 'right': false, 'up': false, 'down': false,
