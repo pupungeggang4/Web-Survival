@@ -13,6 +13,7 @@ class SceneBattle {
         if (game.state === 'start') {
             Render.renderStartWindow(game)
         }
+        Render.renderMenu(game.ctx)
     }
 
     static keyDown(game, key) {
