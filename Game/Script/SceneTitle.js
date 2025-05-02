@@ -10,6 +10,7 @@ class SceneTitle {
         Render.fillTextUI(game.ctx, 'Start Game', UI.title.textStart)
         Render.strokeRectUI(game.ctx, UI.title.buttonErase)
         Render.fillTextUI(game.ctx, 'Erase Data', UI.title.textErase)
+        Render.strokeRectUI(game.ctx, UI.title.arrowTitle[game.cursor.title])
     }
 
     static keyDown(game, key) {
@@ -17,7 +18,18 @@ class SceneTitle {
     }
 
     static keyUp(game, key) {
+        if (key === 'ArrowUp' || key === 'w') {
+            game.cursor.title = (game.cursor.title + 1) % 2
+        } else if (key === 'ArrowDown' || key === 's') {
+            game.cursor.title = (game.cursor.title + 1) % 2
+        } else if (key === 'Enter') {
+            if (game.cursor.title === 0) {
+                game.scene = 'battle'
+                game.state = 'start'
+                game.field = new Field()
 
+            }
+        }
     }
 
     static mouseUp(game, pos, button) {
@@ -27,6 +39,7 @@ class SceneTitle {
                     if (pointInsideRectUI(pos, UI.title.buttonStart)) {
                         game.scene = 'battle'
                         game.state = 'start'
+                        game.field = new Field()
                     }
                 }
             }

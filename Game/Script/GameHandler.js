@@ -14,6 +14,9 @@ class Game {
         this.keyPressed = {
             'left': false, 'right': false, 'up': false, 'down': false,
         }
+        this.cursor = {
+            title: 0
+        }
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')

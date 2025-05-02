@@ -13,23 +13,66 @@ class SceneBattle {
         if (game.state === 'start') {
             Render.renderStartWindow(game)
         }
-        Render.renderMenu(game.ctx)
+
+        if (game.menu === true) {
+            Render.renderMenu(game.ctx)
+        }
     }
 
     static keyDown(game, key) {
+        
+    }
+
+    static keyUp(game, key) {
         if (game.menu === false) {
+            if (key === 'Escape') {
+                game.menu = true
+            }
+
             if (game.state === 'start') {
                 if (key === 'Enter') {
                     game.state = ''
                 }
             }
+        } else if (game.menu === true) {
+            if (key === 'Escape') {
+                game.menu = false
+            } else if (key === 'e') {
+                game.menu = false
+                game.scene = 'title'
+                game.state = ''
+                game.cursor.title = 0
+            }
         }
     }
 
-    static keyUp(game, key) {
+    static mouseUp(game, pos, button) {
+        if (button === 0) {
+            this.handleMouseLeft(game, pos)
+        }
     }
 
-    static mouseUp(game, pos, button) {
+    static handleMouseLeft(game, pos) {
+        if (game.menu === false) {
+            if (pointInsideRectUI(pos, UI.battle.buttonMenu)) {
+                game.menu = true
+            }
+            if (game.state === 'start') {
+                if (pointInsideRectUI(pos, UI.rewardWindow.buttonConfirm)) {
+                    game.state = ''
+                }
+            } if (game.state === '') {
 
+            }
+        } else if (game.menu === true) {
+            if (pointInsideRectUI(pos, UI.menu.buttonResume)) {
+                game.menu = false
+            } else if (pointInsideRectUI(pos, UI.menu.buttonExit)) {
+                game.menu = false
+                game.scene = 'title'
+                game.state = ''
+                game.cursor.title = 0
+            }
+        }
     }
 }

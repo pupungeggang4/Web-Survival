@@ -4,7 +4,8 @@ const UI = {
         buttonStart: [160, 160, 960, 80],
         textStart: [168, 184],
         buttonErase: [160, 240, 960, 80],
-        textErase: [168, 264]
+        textErase: [168, 264],
+        arrowTitle: [[80, 160, 80, 80], [80, 240, 80, 80]]
     },
 
     battle: {
