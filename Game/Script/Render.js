@@ -34,6 +34,14 @@ class Render {
         Render.fillTextUI(ctx, 'Exit', UI.menu.textExit)
     }
 
+    static renderAtCenter(ctx, img, rect) {
+        ctx.drawImage(img, rect.position.x - rect.size.x / 2, rect.position.y - rect.size.y / 2, rect.size.x, rect.size.y)
+    }
+
+    static renderAtCenterCam(ctx, img, rect, cam) {
+        ctx.drawImage(img, rect.position.x - cam.x - rect.size.x / 2, rect.position.y - cam.y - rect.size.y / 2, rect.size.x, rect.size.y)
+    }
+
     static strokeRectUI(ctx, rect) {
         ctx.strokeRect(rect[0], rect[1], rect[2], rect[3])
     }

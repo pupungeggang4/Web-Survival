@@ -27,7 +27,7 @@ class SceneTitle {
                 game.scene = 'battle'
                 game.state = 'start'
                 game.field = new Field()
-
+                game.field.cameraAdjust()
             }
         }
     }
@@ -40,6 +40,7 @@ class SceneTitle {
                         game.scene = 'battle'
                         game.state = 'start'
                         game.field = new Field()
+                        game.field.cameraAdjust()
                     }
                 }
             }

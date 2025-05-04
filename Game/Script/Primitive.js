@@ -9,13 +9,26 @@ class Vector2D {
         this.y += vec.y
     }
 
-    mul(n) {
+    scale(n) {
         this.x *= n
         this.y *= n
     }
 
+    norm() {
+        return Math.sqrt(this.x * this.x + this.y * this.y)
+    }
+
     clone() {
         return new Vector2D(this.x, this.y)
+    }
+
+    static VecSub(v1, v2) {
+        return new Vector2D(v1.x - v2.x, v1.y - v2.y)
+    }
+
+    static VecNormalize(v) {
+        let n = Math.sqrt(v.x * v.x + v.y * v.y)
+        return new Vector2D(v.x / n, v.y / n)
     }
 }
 
@@ -28,11 +41,25 @@ class Rect2D {
     render(ctx) {
         ctx.strokeRect(this.position.x - this.size.x / 2, this.position.y - this.size.y / 2, this.size.x, this.size.y)
     }
+
+    static RectTranslate(v) {
+        return new Rect2D(this.position.x + v.x, this.position.y + v.y, this.size.x, this.size.y)
+    }
 }
 
 class Circle2D {
     constructor(x, y, r) {
         this.position = new Vector2D(x, y)
         this.radius = r
+    }
+}
+
+class Physics2D {
+    static getOverlapCircle(cMain, cTarget) {
+        let vec = Vector2D.VecSub(cMain.position, cTarget.position)
+        let vecN = Vector2D.VecNormalize(vec)
+        return {
+            distance: cMain.radius + cTarget.radius - vec.norm(), direction: vecN
+        }
     }
 }
