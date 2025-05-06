@@ -14,17 +14,17 @@ const UI = {
     },
 
     rewardWindow: {
-        rect: [120, 80, 1040, 640],
-        buttonConfirm: [560, 600, 160, 80],
-        textConfirm: [568, 624],
+        rect: [120, 80, 1040, 560],
+        buttonConfirm: [560, 520, 160, 80],
+        textConfirm: [568, 544],
     },
 
     menu: {
-        rect: [320, 280, 640, 240],
-        textPaused: [328, 304],
-        buttonResume: [320, 360, 640, 80],
-        textResume: [328, 384],
-        buttonExit: [320, 440, 640, 80],
-        textExit: [328, 464],
+        rect: [320, 240, 640, 240],
+        textPaused: [328, 264],
+        buttonResume: [320, 320, 640, 80],
+        textResume: [328, 344],
+        buttonExit: [320, 400, 640, 80],
+        textExit: [328, 424],
     },
 }
