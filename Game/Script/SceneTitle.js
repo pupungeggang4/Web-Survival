@@ -28,6 +28,7 @@ class SceneTitle {
                 game.state = 'start'
                 game.field = new Field()
                 game.field.cameraAdjust()
+                audio.bg.play()
             }
         }
     }
@@ -41,7 +42,7 @@ class SceneTitle {
                         game.state = 'start'
                         game.field = new Field()
                         game.field.cameraAdjust()
-
+                        audio.bg.play()
                     }
                 }
             }

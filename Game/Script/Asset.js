@@ -10,7 +10,7 @@ let audio = {
 }
 
 function audioLoad() {
-    audio.bg.src = 'Audio/'
+    audio.bg.src = 'Audio/Test.wav'
 }
 
 function imageLoad() {
