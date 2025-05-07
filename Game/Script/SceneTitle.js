@@ -41,6 +41,7 @@ class SceneTitle {
                         game.state = 'start'
                         game.field = new Field()
                         game.field.cameraAdjust()
+
                     }
                 }
             }

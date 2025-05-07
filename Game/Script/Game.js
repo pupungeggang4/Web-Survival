@@ -3,6 +3,7 @@ let game
 class Game {
     constructor() {
         imageLoad()
+        audioLoad()
         this.scene = 'title'
         this.state = ''
         this.menu = false
@@ -21,6 +22,7 @@ class Game {
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')
+        this.audio = new AudioContext()
         this.canvas.addEventListener('mouseup', (event) => this.mouseUp(event), false)
         window.addEventListener('keydown', (event) => this.keyDown(event), false)
         window.addEventListener('keyup', (event) => this.keyUp(event), false)

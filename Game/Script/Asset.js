@@ -5,6 +5,14 @@ let img = {
     lifeBarEmpty80: new Image(),
 }
 
+let audio = {
+    bg: new Audio()
+}
+
+function audioLoad() {
+    audio.bg.src = 'Audio/'
+}
+
 function imageLoad() {
     img.lifeBarFull40.src = 'Image/LifeBarFull40.png'
     img.lifeBarEmpty40.src = 'Image/LifeBarEmpty40.png'
