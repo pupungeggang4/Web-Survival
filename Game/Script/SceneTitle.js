@@ -24,11 +24,7 @@ class SceneTitle {
             game.cursor.title = (game.cursor.title + 1) % 2
         } else if (key === 'Enter') {
             if (game.cursor.title === 0) {
-                game.scene = 'battle'
-                game.state = 'start'
-                game.field = new Field()
-                game.field.cameraAdjust()
-                audio.bg.play()
+                game.battleInit()
             }
         }
     }
@@ -38,11 +34,7 @@ class SceneTitle {
             if (game.menu === false) {
                 if (game.state === '') {
                     if (pointInsideRectUI(pos, UI.title.buttonStart)) {
-                        game.scene = 'battle'
-                        game.state = 'start'
-                        game.field = new Field()
-                        game.field.cameraAdjust()
-                        audio.bg.play()
+                        game.battleInit()
                     }
                 }
             }

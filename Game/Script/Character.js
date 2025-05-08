@@ -2,21 +2,47 @@ class Character {
     hp = 0
     constructor() {
     }
+
+    clone() {
+        let o = new this.constructor()
+        o.ID = this.ID
+        o.setUnit(o.ID)
+        o.copyStat(this)
+        return o
+    }
 }
 
 class Unit extends Character {
     constructor() {
         super()
+        
+        this.ID = 0
+        this.attack = 10
         this.hp = 60
         this.hpMax = 60
         this.speed = 100
+
         this.rect = new Rect2D(200, 200, 40, 40)
         this.collisionCircle = new Circle2D(0, 0, 20)
+        
         this.canvas = document.createElement('canvas')
         this.canvas.width = this.rect.size.x
         this.canvas.height = this.rect.size.y
         this.ctx = this.canvas.getContext('2d')
         this.ctx.lineWidth = 4
+    }
+
+    setUnit(ID) {
+        this.ID = ID
+        let data = JSON.parse(JSON.stringify(dataUnit[this.ID]))
+        this.attack = data['attack']
+        this.hp = data['hp']
+        this.hpMax = data['hp']
+        this.speed = data['speed']
+    }
+
+    copyStat(target) {
+        o.hp = target.hp
     }
 
     handleTick(game) {

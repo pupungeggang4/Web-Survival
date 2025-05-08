@@ -8,14 +8,14 @@ class Field {
         this.player = new Player()
         this.camera = new Vector2D()
         this.unitList = {}
-        this.unitID = 0
+        this.unitIndex = 0
         this.projectileList = {}
-        this.projectID = 0
+        this.projectileIndex = 0
 
-        this.spawnUnit(new Unit(), new Vector2D(1080, 1080))
-        this.spawnUnit(new Unit(), new Vector2D(1480, 1480))
-        this.spawnUnit(new Unit(), new Vector2D(1080, 1480))
-        this.spawnUnit(new Unit(), new Vector2D(1480, 1080))
+        this.spawnUnit(1, new Vector2D(1080, 1080))
+        this.spawnUnit(1, new Vector2D(1480, 1480))
+        this.spawnUnit(1, new Vector2D(1080, 1480))
+        this.spawnUnit(1, new Vector2D(1480, 1080))
     }
 
     handleTick(game) {
@@ -28,11 +28,13 @@ class Field {
         this.unitDeathHandle()
     }
 
-    spawnUnit(unit, pos) {
+    spawnUnit(ID, pos) {
         if (Object.keys(this.unitList).length < 50) {
+            let unit = new Unit()
+            unit.setUnit(ID)
             unit.rect.position = pos
-            this.unitList[this.unitID] = unit
-            this.unitID += 1
+            this.unitList[this.unitIndex] = unit
+            this.unitIndex += 1
         }
     }
 
@@ -64,7 +66,7 @@ class Field {
                 uMain.collisionCircle.position.x = uMain.rect.position.x
                 uMain.collisionCircle.position.y = uMain.rect.position.y
                 if (uTarget.invTime <= 0) {
-                    uTarget.takeDamage(5)
+                    uTarget.takeDamage(uMain.attack)
                 }
             }
         }

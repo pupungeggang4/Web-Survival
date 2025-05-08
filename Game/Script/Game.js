@@ -32,6 +32,14 @@ class Game {
         this.gameLoop = requestAnimationFrame(() => this.loop())
     }
 
+    battleInit() {
+        this.scene = 'battle'
+        this.state = 'start'
+        this.field = new Field()
+        this.field.cameraAdjust()
+        audio.bg.play()
+    }
+
     loop() {
         this.framePrevious = this.frameCurrent
         this.frameCurrent = performance.now()
