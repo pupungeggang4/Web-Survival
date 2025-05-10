@@ -21,6 +21,25 @@ class Render {
         Render.fillTextUI(game.ctx, 'Confirm', UI.rewardWindow.textConfirm)
     }
 
+    static renderLowerUI(ctx, player) {
+        Render.drawImageUI(ctx, img.icon.energy, UI.battle.lower.iconEnergy)
+        Render.fillTextUI(ctx, `${player.energy.toFixed(1)}/${player.energyMax}`, UI.battle.lower.textEnergy)
+        Render.strokeRectUI(ctx, UI.battle.lower.baseAttack)
+        Render.strokeRectUI(ctx, UI.battle.lower.hand)
+        Render.strokeRectUI(ctx, UI.battle.lower.cardBack)
+    }
+
+    static renderGameOverWindow(ctx) {
+        ctx.fillStyle = 'white'
+        Render.fillRectUI(ctx, UI.gameOverWindow.rect)
+        Render.strokeRectUI(ctx, UI.gameOverWindow.rect)
+        ctx.fillStyle = 'black'
+
+        Render.fillTextUI(ctx, 'Game Over!', UI.gameOverWindow.textTitle)
+        Render.strokeRectUI(ctx, UI.gameOverWindow.buttonOK)
+        Render.fillTextUI(ctx, 'OK [E]', UI.gameOverWindow.textOK)
+    }
+
     static renderMenu(ctx) {
         ctx.fillStyle = 'white'
         Render.fillRectUI(ctx, UI.menu.rect)
@@ -29,9 +48,9 @@ class Render {
 
         Render.fillTextUI(ctx, 'Paused', UI.menu.textPaused)
         Render.strokeRectUI(ctx, UI.menu.buttonResume)
-        Render.fillTextUI(ctx, 'Resume', UI.menu.textResume)
+        Render.fillTextUI(ctx, 'Resume [R]', UI.menu.textResume)
         Render.strokeRectUI(ctx, UI.menu.buttonExit)
-        Render.fillTextUI(ctx, 'Exit', UI.menu.textExit)
+        Render.fillTextUI(ctx, 'Exit [E]', UI.menu.textExit)
     }
 
     static renderAtCenter(ctx, img, rect) {
@@ -48,6 +67,10 @@ class Render {
 
     static fillRectUI(ctx, rect) {
         ctx.fillRect(rect[0], rect[1], rect[2], rect[3])
+    }
+
+    static drawImageUI(ctx, img, rect) {
+        ctx.drawImage(img, rect[0], rect[1])
     }
 
     static fillTextUI(ctx, text, pos) {

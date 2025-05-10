@@ -2,6 +2,9 @@ class SceneBattle {
     static loop(game) {
         if (game.menu === false && game.state === '') {
             game.field.handleTick(game)
+            if (game.field.player.hp <= 0) {
+                game.state = 'game_over'
+            }
         }
         this.render(game)
     }
@@ -10,8 +13,13 @@ class SceneBattle {
         Render.init(game.ctx)
         game.field.render(game)
         Render.strokeRectUI(game.ctx, UI.battle.buttonMenu)
+        Render.renderLowerUI(game.ctx, game.field.player)
         if (game.state === 'start') {
             Render.renderStartWindow(game)
+        }
+
+        if (game.state === 'game_over') {
+            Render.renderGameOverWindow(game.ctx)
         }
 
         if (game.menu === true) {
@@ -34,8 +42,15 @@ class SceneBattle {
                     game.state = ''
                 }
             }
+            if (game.state === 'game_over') {
+                if (key === 'e') {
+                    game.scene = 'title'
+                    game.state = ''
+                    game.cursor.title = 0
+                }
+            }
         } else if (game.menu === true) {
-            if (key === 'Escape') {
+            if (key === 'Escape' || key === 'r') {
                 game.menu = false
             } else if (key === 'e') {
                 game.menu = false
@@ -61,8 +76,13 @@ class SceneBattle {
                 if (pointInsideRectUI(pos, UI.rewardWindow.buttonConfirm)) {
                     game.state = ''
                 }
-            } if (game.state === '') {
-
+            }
+            if (game.state === 'game_over') {
+                if (pointInsideRectUI(pos, UI.gameOverWindow.buttonOK)) {
+                    game.scene = 'title'
+                    game.state = ''
+                    game.cursor.title = 0
+                }
             }
         } else if (game.menu === true) {
             if (pointInsideRectUI(pos, UI.menu.buttonResume)) {

@@ -9,8 +9,12 @@ class Player extends Character {
         this.moveSet = {
             'left': new Vector2D(-1, 0), 'right': new Vector2D(1, 0), 'up': new Vector2D(0, -1), 'down': new Vector2D(0, 1)
         }
+
         this.hp = 60
         this.hpMax = 60
+        this.energy = 6.0
+        this.energyMax = 6
+        this.energyGen = 1
         this.invTime = 0.5
 
         this.canvas = document.createElement('canvas')
@@ -25,6 +29,7 @@ class Player extends Character {
         if (this.invTime <= 0) {
             this.invTime = 0
         }
+        this.energyGenerate(game)
         this.move(game)
     }
 
@@ -34,6 +39,13 @@ class Player extends Character {
                 this.rect.position.x += this.moveSet[k].x * this.speed * game.delta / 1000
                 this.rect.position.y += this.moveSet[k].y * this.speed * game.delta / 1000
             }
+        }
+    }
+
+    energyGenerate(game) {
+        this.energy += this.energyGen * game.delta / 1000
+        if (this.energy > this.energyMax) {
+            this.energy = this.energyMax
         }
     }
 

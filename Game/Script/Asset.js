@@ -3,6 +3,10 @@ let img = {
     lifeBarEmpty40: new Image(),
     lifeBarFull80: new Image(),
     lifeBarEmpty80: new Image(),
+
+    icon: {
+        energy: new Image(),
+    }
 }
 
 let audio = {
@@ -18,4 +22,5 @@ function imageLoad() {
     img.lifeBarEmpty40.src = 'Image/LifeBarEmpty40.png'
     img.lifeBarFull80.src = 'Image/LifeBarFull80.png'
     img.lifeBarEmpty80.src = 'Image/LifeBarEmpty80.png'
+    img.icon.energy.src = 'Image/Icon/IconEnergy.png'
 }

@@ -11,12 +11,29 @@ const UI = {
     battle: {
         buttonMenu: [1160, 40, 80, 80],
         buttonBaseAttack: [40, 680, 80, 80],
+
+        lower: {
+            iconEnergy: [40, 560],
+            textEnergy: [84, 564],
+            energyBarStart: [200, 560],
+            energyBarSize: [40, 40],
+            baseAttack: [40, 620, 80, 80],
+            hand: [120, 620, 640, 80],
+            cardBack: [760, 620, 80, 80],
+        }
     },
 
     rewardWindow: {
         rect: [120, 80, 1040, 560],
         buttonConfirm: [560, 520, 160, 80],
         textConfirm: [568, 544],
+    },
+
+    gameOverWindow: {
+        rect: [320, 240, 640, 240],
+        textTitle: [324, 244],
+        buttonOK: [560, 360, 160, 80],
+        textOK: [564, 384]
     },
 
     menu: {
