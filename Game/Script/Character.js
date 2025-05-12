@@ -20,6 +20,7 @@ class Unit extends Character {
         this.attack = 10
         this.hp = 60
         this.hpMax = 60
+        this.attackType = 0
         this.speed = 100
 
         this.rect = new Rect2D(200, 200, 40, 40)
@@ -38,6 +39,7 @@ class Unit extends Character {
         this.attack = data['attack']
         this.hp = data['hp']
         this.hpMax = data['hp']
+        this.attackType = data['attack_type']
         this.speed = data['speed']
     }
 
@@ -47,6 +49,7 @@ class Unit extends Character {
 
     handleTick(game) {
         this.move(game)
+        this.attackHandle(game, game.field.player)
     }
 
     move(game) {
@@ -61,6 +64,14 @@ class Unit extends Character {
             this.rect.position.translate(diffN)
             this.collisionCircle.position.x = this.rect.position.x
             this.collisionCircle.position.y = this.rect.position.y
+        }
+    }
+
+    attackHandle(game, target) {
+        if (this.attackType === 1) {
+            if (Vector2D.Distance(this.rect.position, target.rect.position) < 65) {
+                target.takeDamage(this.attack)
+            }
         }
     }
 

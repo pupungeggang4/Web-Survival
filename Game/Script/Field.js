@@ -7,10 +7,8 @@ class Field {
 
         this.player = new Player()
         this.camera = new Vector2D()
-        this.unitList = {}
-        this.unitIndex = 0
-        this.projectileList = {}
-        this.projectileIndex = 0
+        this.unitList = []
+        this.projectileList = []
 
         this.spawnUnit(1, new Vector2D(1080, 1080))
         this.spawnUnit(1, new Vector2D(1480, 1480))
@@ -33,14 +31,13 @@ class Field {
             let unit = new Unit()
             unit.setUnit(ID)
             unit.rect.position = pos
-            this.unitList[this.unitIndex] = unit
-            this.unitIndex += 1
+            this.unitList.push(unit)
         }
     }
 
     unitCollideHandle() {
-        for (let i in this.unitList) {
-            for (let j in this.unitList) {
+        for (let i = 0; i < this.unitList.length; i++) {
+            for (let j = 0; j < this.unitList.length; j++) {
                 if (i != j) {
                     let uMain = this.unitList[i]
                     let uTarget = this.unitList[j]
@@ -55,7 +52,7 @@ class Field {
             }
         }
 
-        for (let i in this.unitList) {
+        for (let i = 0; i < this.unitList.length; i++) {
             let uMain = this.unitList[i]
             let uTarget = this.player
 
@@ -65,17 +62,14 @@ class Field {
                 uMain.rect.position.translate(collision.direction)
                 uMain.collisionCircle.position.x = uMain.rect.position.x
                 uMain.collisionCircle.position.y = uMain.rect.position.y
-                if (uTarget.invTime <= 0) {
-                    uTarget.takeDamage(uMain.attack)
-                }
             }
         }
     }
 
     unitDeathHandle() {
-        for (let i in this.unitList) {
+        for (let i = this.unitList.length - 1; i >= 0; i--) {
             if (this.unitList[i].hp < 0) {
-                delete this.unitList[i]
+                this.unitList.splice(i, 1)
             }
         }
     }

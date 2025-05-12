@@ -24,9 +24,15 @@ class Render {
     static renderLowerUI(ctx, player) {
         Render.drawImageUI(ctx, img.icon.energy, UI.battle.lower.iconEnergy)
         Render.fillTextUI(ctx, `${player.energy.toFixed(1)}/${player.energyMax}`, UI.battle.lower.textEnergy)
+
+        ctx.fillStyle = 'white'
+        Render.fillRectUI(ctx, UI.battle.lower.baseAttack)
+        Render.fillRectUI(ctx, UI.battle.lower.hand)
+        Render.fillRectUI(ctx, UI.battle.lower.cardBack)
         Render.strokeRectUI(ctx, UI.battle.lower.baseAttack)
         Render.strokeRectUI(ctx, UI.battle.lower.hand)
         Render.strokeRectUI(ctx, UI.battle.lower.cardBack)
+        ctx.fillStyle = 'black'
     }
 
     static renderGameOverWindow(ctx) {

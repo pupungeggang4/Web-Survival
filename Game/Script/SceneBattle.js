@@ -14,6 +14,7 @@ class SceneBattle {
         game.field.render(game)
         Render.strokeRectUI(game.ctx, UI.battle.buttonMenu)
         Render.renderLowerUI(game.ctx, game.field.player)
+
         if (game.state === 'start') {
             Render.renderStartWindow(game)
         }

@@ -16,6 +16,7 @@ class Player extends Character {
         this.energyMax = 6
         this.energyGen = 1
         this.invTime = 0.5
+        this.invTimeMax = 0.5
 
         this.canvas = document.createElement('canvas')
         this.canvas.width = this.rect.size.x
@@ -50,8 +51,10 @@ class Player extends Character {
     }
 
     takeDamage(damage) {
-        this.hp -= damage
-        this.invTime = 0.5
+        if (this.invTime <= 0) {
+            this.hp -= damage
+            this.invTime = this.invTimeMax
+        }
     }
 
     render(ctx, camera) {

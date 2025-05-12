@@ -30,6 +30,10 @@ class Vector2D {
         let n = Math.sqrt(v.x * v.x + v.y * v.y)
         return new Vector2D(v.x / n, v.y / n)
     }
+    
+    static Distance(v1, v2) {
+        return Math.sqrt((v1.x - v2.x) ** 2 + (v1.y - v2.y) ** 2)
+    }
 }
 
 class Rect2D {
