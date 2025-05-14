@@ -24,6 +24,21 @@ class Render {
     static renderLowerUI(ctx, player) {
         Render.drawImageUI(ctx, img.icon.energy, UI.battle.lower.iconEnergy)
         Render.fillTextUI(ctx, `${player.energy.toFixed(1)}/${player.energyMax}`, UI.battle.lower.textEnergy)
+        
+        ctx.fillStyle = 'Cyan'
+        let energyWidth = UI.battle.lower.energyBarSize[0] * player.energy
+        ctx.fillRect(UI.battle.lower.energyBarStart[0], UI.battle.lower.energyBarStart[1], energyWidth, UI.battle.lower.energyBarSize[1])
+        for (let i = 0; i < player.energyMax; i++) {
+            ctx.strokeRect(UI.battle.lower.energyBarStart[0] + UI.battle.lower.energyBarSize[0] * i, UI.battle.lower.energyBarStart[1], UI.battle.lower.energyBarSize[0], UI.battle.lower.energyBarSize[1])
+        }
+        
+        ctx.fillStyle = 'Black'
+        Render.fillTextUI(ctx, `${Math.floor(player.hp)}/${player.hpMax}`, UI.battle.lower.textHP)
+
+        ctx.fillStyle = 'Green'
+        let hpWidth = UI.battle.lower.hpBar[2] * player.hp / player.hpMax
+        ctx.fillRect(UI.battle.lower.hpBar[0], UI.battle.lower.hpBar[1], hpWidth, UI.battle.lower.hpBar[3])
+        Render.strokeRectUI(ctx, UI.battle.lower.hpBar)
 
         ctx.fillStyle = 'white'
         Render.fillRectUI(ctx, UI.battle.lower.baseAttack)

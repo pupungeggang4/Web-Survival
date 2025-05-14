@@ -3,6 +3,14 @@ class Character {
     constructor() {
     }
 
+    draw(sprite) {
+        this.spriteCurrent = Math.floor(performance.now() / this.spriteInterval) % this.spriteTotal
+        let spriteRow = Math.floor(this.spriteCurrent / 4)
+        let spriteColumn = this.spriteCurrent % 4
+        let cut = [spriteColumn * this.canvas.width, spriteRow * this.canvas.height, this.canvas.width, this.canvas.height]
+        this.ctx.drawImage(sprite, cut[0], cut[1], cut[2], cut[3], 0, 0, this.canvas.width, this.canvas.height)
+    }
+
     clone() {
         let o = new this.constructor()
         o.ID = this.ID
@@ -31,6 +39,9 @@ class Unit extends Character {
         this.canvas.height = this.rect.size.y
         this.ctx = this.canvas.getContext('2d')
         this.ctx.lineWidth = 4
+        this.spriteTotal = 4
+        this.spriteCurrent = 0
+        this.spriteInterval = 250
     }
 
     setUnit(ID) {
@@ -69,7 +80,7 @@ class Unit extends Character {
 
     attackHandle(game, target) {
         if (this.attackType === 1) {
-            if (Vector2D.Distance(this.rect.position, target.rect.position) < 65) {
+            if (Vector2D.Distance(this.rect.position, target.rect.position) < 42) {
                 target.takeDamage(this.attack)
             }
         }

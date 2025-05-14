@@ -17,8 +17,8 @@ class Field {
     }
 
     handleTick(game) {
-        this.cameraAdjust()
         this.player.handleTick(game)
+        this.cameraAdjust()
         for (let i in this.unitList) {
             this.unitList[i].handleTick(game)
         }

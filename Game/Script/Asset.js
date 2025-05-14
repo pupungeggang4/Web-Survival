@@ -6,6 +6,15 @@ let img = {
 
     icon: {
         energy: new Image(),
+    },
+
+    sprite: {
+        player: {
+            'left': new Image(),
+            'right': new Image(),
+            'up': new Image(),
+            'down': new Image(),
+        }
     }
 }
 
@@ -23,4 +32,9 @@ function imageLoad() {
     img.lifeBarFull80.src = 'Image/LifeBarFull80.png'
     img.lifeBarEmpty80.src = 'Image/LifeBarEmpty80.png'
     img.icon.energy.src = 'Image/Icon/IconEnergy.png'
+
+    img.sprite.player['left'].src = 'Image/Sprite/SpritePlayerLeft.png'
+    img.sprite.player['right'].src = 'Image/Sprite/SpritePlayerRight.png'
+    img.sprite.player['up'].src = 'Image/Sprite/SpritePlayerUp.png'
+    img.sprite.player['down'].src = 'Image/Sprite/SpritePlayerDown.png'
 }
