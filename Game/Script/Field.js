@@ -19,7 +19,7 @@ class Field {
     handleTick(game) {
         this.player.handleTick(game)
         this.cameraAdjust()
-        for (let i in this.unitList) {
+        for (let i = 0; i < this.unitList.length; i++) {
             this.unitList[i].handleTick(game)
         }
         this.unitCollideHandle()
@@ -68,7 +68,7 @@ class Field {
 
     unitDeathHandle() {
         for (let i = this.unitList.length - 1; i >= 0; i--) {
-            if (this.unitList[i].hp < 0) {
+            if (this.unitList[i].hp <= 0) {
                 this.unitList.splice(i, 1)
             }
         }

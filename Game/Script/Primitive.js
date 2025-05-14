@@ -49,6 +49,10 @@ class Rect2D {
     static RectTranslate(v) {
         return new Rect2D(this.position.x + v.x, this.position.y + v.y, this.size.x, this.size.y)
     }
+
+    static VectorInsideRect(v, r) {
+        return v.x > r.position.x - r.size.x / 2 && v.x < r.position.x + r.size.x / 2 && v.y > r.position.y - r.size.y / 2 && v.y + r.size.y / 2
+    }
 }
 
 class Circle2D {

@@ -42,8 +42,11 @@ class SceneBattle {
                 if (key === 'Enter') {
                     game.state = ''
                 }
-            }
-            if (game.state === 'game_over') {
+            } else if (game.state === '') {
+                if (key === '1') {
+                    game.field.player.useSkill(game.field)
+                }
+            } else if (game.state === 'game_over') {
                 if (key === 'e') {
                     game.scene = 'title'
                     game.state = ''

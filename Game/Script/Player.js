@@ -15,6 +15,7 @@ class Player extends Character {
         this.energy = 6.0
         this.energyMax = 6
         this.energyGen = 1
+        this.attack = 10
         this.invTime = 0.5
         this.invTimeMax = 0.5
         this.skill = new Skill()
@@ -35,6 +36,10 @@ class Player extends Character {
         this.invTime -= game.delta / 1000
         if (this.invTime <= 0) {
             this.invTime = 0
+        }
+        this.skillRecharge -= game.delta / 1000
+        if (this.skillRecharge <= 0) {
+            this.skillRecharge = 0
         }
         this.energyGenerate(game)
         this.move(game)
@@ -62,6 +67,22 @@ class Player extends Character {
         if (this.invTime <= 0) {
             this.hp -= damage
             this.invTime = this.invTimeMax
+        }
+    }
+
+    useSkill(field) {
+        if (this.energy >= this.skill.energy && this.skillRecharge <= 0) {
+            this.energy -= this.skill.energy
+            this.skillRecharge = this.skill.recharge
+            if (this.skill.action[0] === 'attack') {
+                let attackRect = new Rect2D(this.rect.position.x + this.skill.action[1][this.facing][0], this.rect.position.y + this.skill.action[1][this.facing][1], this.skill.action[1][this.facing][2], this.skill.action[1][this.facing][3])
+                for (let i = 0; i < field.unitList.length; i++) {
+                    let unit = field.unitList[i]
+                    if (Rect2D.VectorInsideRect(unit.rect.position, attackRect)) {
+                        unit.takeDamage(this.attack * this.skill.action[2] + this.skill.action[3])
+                    }
+                }
+            }
         }
     }
 
