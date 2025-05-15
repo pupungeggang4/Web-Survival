@@ -1,4 +1,4 @@
-class Skill {
+class Weapon {
     constructor() {
         this.ID = 0
         this.energy = 0
@@ -6,9 +6,9 @@ class Skill {
         this.action = []
     }
 
-    setSkill(ID) {
+    setWeapon(ID) {
         this.ID = ID
-        let data = JSON.parse(JSON.stringify(dataSkill[this.ID]))
+        let data = JSON.parse(JSON.stringify(dataWeapon[this.ID]))
         this.energy = data['energy']
         this.recharge = data['recharge']
         this.action = data['action']

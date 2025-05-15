@@ -48,6 +48,11 @@ class Render {
         Render.strokeRectUI(ctx, UI.battle.lower.hand)
         Render.strokeRectUI(ctx, UI.battle.lower.cardBack)
         ctx.fillStyle = 'black'
+
+        Render.drawImageUI(ctx, img.weapon[1], UI.battle.lower.baseAttack)
+        ctx.fillStyle = 'gray'
+        let rechargeWidth = UI.battle.lower.baseAttack[2] * player.weaponRecharge / player.weapon.recharge
+        ctx.fillRect(UI.battle.lower.baseAttack[0], UI.battle.lower.baseAttack[1], rechargeWidth, UI.battle.lower.baseAttack[3])
     }
 
     static renderGameOverWindow(ctx) {

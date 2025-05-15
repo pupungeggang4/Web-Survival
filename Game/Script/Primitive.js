@@ -63,6 +63,10 @@ class Circle2D {
 }
 
 class Physics2D {
+    static RectCircleCollide(r, c) {
+        return c.position.x > r.position.x - r.size.x / 2 - c.radius && c.position.x < r.position.x + r.size.x / 2 + c.radius && c.position.y > r.position.y - r.size.y / 2 - c.radius && c.position.y < r.position.y + r.size.y / 2 + c.radius
+    }
+
     static getOverlapCircle(cMain, cTarget) {
         let vec = Vector2D.VecSub(cMain.position, cTarget.position)
         let vecN = Vector2D.VecNormalize(vec)

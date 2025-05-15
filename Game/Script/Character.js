@@ -80,7 +80,7 @@ class Unit extends Character {
 
     attackHandle(game, target) {
         if (this.attackType === 1) {
-            if (Vector2D.Distance(this.rect.position, target.rect.position) < 42) {
+            if (Vector2D.Distance(this.rect.position, target.rect.position) < 41) {
                 target.takeDamage(this.attack)
             }
         }

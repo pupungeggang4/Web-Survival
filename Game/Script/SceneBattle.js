@@ -44,7 +44,7 @@ class SceneBattle {
                 }
             } else if (game.state === '') {
                 if (key === '1') {
-                    game.field.player.useSkill(game.field)
+                    game.field.player.useWeapon(game.field)
                 }
             } else if (game.state === 'game_over') {
                 if (key === 'e') {

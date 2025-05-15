@@ -8,6 +8,10 @@ let img = {
         energy: new Image(),
     },
 
+    weapon: {
+
+    },
+
     sprite: {
         player: {
             'left': new Image(),
@@ -32,6 +36,11 @@ function imageLoad() {
     img.lifeBarFull80.src = 'Image/LifeBarFull80.png'
     img.lifeBarEmpty80.src = 'Image/LifeBarEmpty80.png'
     img.icon.energy.src = 'Image/Icon/IconEnergy.png'
+
+    for (let i = 0; i < 10; i++) {
+        img.weapon[i] = new Image()
+    }
+    img.weapon[1].src = 'Image/Weapon/Weapon001.png'
 
     img.sprite.player['left'].src = 'Image/Sprite/SpritePlayerLeft.png'
     img.sprite.player['right'].src = 'Image/Sprite/SpritePlayerRight.png'
