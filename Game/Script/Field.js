@@ -9,6 +9,7 @@ class Field {
         this.camera = new Vector2D()
         this.unitList = []
         this.projectileList = []
+        this.effectList = []
 
         this.spawnUnit(1, new Vector2D(1080, 1080))
         this.spawnUnit(1, new Vector2D(1480, 1480))
@@ -22,8 +23,12 @@ class Field {
         for (let i = 0; i < this.unitList.length; i++) {
             this.unitList[i].handleTick(game)
         }
+        for (let i = 0; i < this.effectList.length; i++) {
+            this.effectList[i].handleTick(game)
+        }
         this.unitCollideHandle()
         this.unitDeathHandle()
+        this.effectHandle()
     }
 
     spawnUnit(ID, pos) {
@@ -74,6 +79,14 @@ class Field {
         }
     }
 
+    effectHandle() {
+        for (let i = this.effectList.length - 1; i >= 0; i--) {
+            if (this.effectList[i].time >=  this.effectList[i].cycle) {
+                this.effectList.splice(i, 1)
+            }
+        }
+    }
+
     cameraAdjust() {
         this.camera.x = this.player.rect.position.x - this.canvas.width / 2
         this.camera.y = this.player.rect.position.y - this.canvas.height / 2
@@ -84,6 +97,9 @@ class Field {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         for (let i in this.unitList) {
             this.unitList[i].render(this.ctx, this.camera)
+        }
+        for (let i in this.effectList) {
+            this.effectList[i].render(this.ctx, this.camera)
         }
         this.player.render(this.ctx, this.camera)
         game.ctx.drawImage(this.canvas, 0, 0)

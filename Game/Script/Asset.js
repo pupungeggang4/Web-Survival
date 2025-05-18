@@ -19,6 +19,15 @@ let img = {
             'up': new Image(),
             'down': new Image(),
         }
+    },
+
+    effect: {
+        attack: {
+            'left': new Image(),
+            'right': new Image(),
+            'up': new Image(),
+            'down': new Image()
+        },
     }
 }
 
@@ -46,4 +55,9 @@ function imageLoad() {
     img.sprite.player['right'].src = 'Image/Sprite/SpritePlayerRight.png'
     img.sprite.player['up'].src = 'Image/Sprite/SpritePlayerUp.png'
     img.sprite.player['down'].src = 'Image/Sprite/SpritePlayerDown.png'
+
+    img.effect.attack['left'].src = 'Image/Effect/EffectAttackLeft.png'
+    img.effect.attack['right'].src = 'Image/Effect/EffectAttackRight.png'
+    img.effect.attack['up'].src = 'Image/Effect/EffectAttackUp.png'
+    img.effect.attack['down'].src = 'Image/Effect/EffectAttackDown.png'
 }

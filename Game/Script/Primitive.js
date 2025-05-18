@@ -46,6 +46,10 @@ class Rect2D {
         ctx.strokeRect(this.position.x - this.size.x / 2, this.position.y - this.size.y / 2, this.size.x, this.size.y)
     }
 
+    clone() {
+        return new Rect2D(this.position.x, this.position.y, this.size.x, this.size.y)
+    }
+
     static RectTranslate(v) {
         return new Rect2D(this.position.x + v.x, this.position.y + v.y, this.size.x, this.size.y)
     }

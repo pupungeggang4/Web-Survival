@@ -76,6 +76,10 @@ class Player extends Character {
             this.weaponRecharge = this.weapon.recharge
             if (this.weapon.action[0] === 'attack') {
                 let attackRect = new Rect2D(this.rect.position.x + this.weapon.action[1][this.facing][0], this.rect.position.y + this.weapon.action[1][this.facing][1], this.weapon.action[1][this.facing][2], this.weapon.action[1][this.facing][3])
+                let tempEffect = new Effect()
+                tempEffect.setEffect(1, attackRect.clone(), this.facing)
+                field.effectList.push(tempEffect)
+
                 for (let i = 0; i < field.unitList.length; i++) {
                     let unit = field.unitList[i]
                     if (Physics2D.RectCircleCollide(attackRect, unit.collisionCircle)) {
