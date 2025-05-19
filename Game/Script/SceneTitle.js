@@ -10,7 +10,7 @@ class SceneTitle {
         Render.fillTextUI(game.ctx, 'Start Game', UI.title.textStart)
         Render.strokeRectUI(game.ctx, UI.title.buttonErase)
         Render.fillTextUI(game.ctx, 'Erase Data', UI.title.textErase)
-        Render.strokeRectUI(game.ctx, UI.title.arrowTitle[game.cursor.title])
+        Render.drawImageUI(game.ctx, img.arrow, UI.title.arrowTitle[game.cursor.title])
     }
 
     static keyDown(game, key) {

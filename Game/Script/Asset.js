@@ -3,6 +3,11 @@ let img = {
     lifeBarEmpty40: new Image(),
     lifeBarFull80: new Image(),
     lifeBarEmpty80: new Image(),
+    arrow: new Image(),
+
+    button: {
+        menu: new Image(),
+    },
 
     icon: {
         energy: new Image(),
@@ -18,6 +23,10 @@ let img = {
             'right': new Image(),
             'up': new Image(),
             'down': new Image(),
+        },
+
+        unit: {
+            1: new Image(),
         }
     },
 
@@ -28,7 +37,7 @@ let img = {
             'up': new Image(),
             'down': new Image()
         },
-    }
+    },
 }
 
 let audio = {
@@ -44,6 +53,9 @@ function imageLoad() {
     img.lifeBarEmpty40.src = 'Image/LifeBarEmpty40.png'
     img.lifeBarFull80.src = 'Image/LifeBarFull80.png'
     img.lifeBarEmpty80.src = 'Image/LifeBarEmpty80.png'
+    img.arrow.src = 'Image/Arrow.png'
+    img.button.menu.src = 'Image/Button/ButtonMenu.png'
+
     img.icon.energy.src = 'Image/Icon/IconEnergy.png'
 
     for (let i = 0; i < 10; i++) {
@@ -55,6 +67,7 @@ function imageLoad() {
     img.sprite.player['right'].src = 'Image/Sprite/SpritePlayerRight.png'
     img.sprite.player['up'].src = 'Image/Sprite/SpritePlayerUp.png'
     img.sprite.player['down'].src = 'Image/Sprite/SpritePlayerDown.png'
+    img.sprite.unit[1].src = 'Image/Sprite/SpriteMonster001.png'
 
     img.effect.attack['left'].src = 'Image/Effect/EffectAttackLeft.png'
     img.effect.attack['right'].src = 'Image/Effect/EffectAttackRight.png'

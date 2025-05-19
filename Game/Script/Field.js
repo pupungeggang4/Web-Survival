@@ -11,10 +11,12 @@ class Field {
         this.projectileList = []
         this.effectList = []
 
-        this.spawnUnit(1, new Vector2D(1080, 1080))
-        this.spawnUnit(1, new Vector2D(1480, 1480))
-        this.spawnUnit(1, new Vector2D(1080, 1480))
-        this.spawnUnit(1, new Vector2D(1480, 1080))
+        this.wave = 0
+        this.waveTime = 0
+        this.waveList = JSON.parse(JSON.stringify(dataWave[1]))
+        this.spawnRect = [
+            [-640, -440, 1280, 80], [640, 360, 1280, 80], [-720, -360, 80, 720], [640, -360, 80, 720]
+        ]
     }
 
     handleTick(game) {
@@ -29,6 +31,32 @@ class Field {
         this.unitCollideHandle()
         this.unitDeathHandle()
         this.effectHandle()
+
+        this.waveHandle(game)
+    }
+
+    waveHandle(game) {
+        this.waveTime += game.delta / 1000
+        for (let i = this.waveList.length - 1; i >= 0; i--) {
+            let wave = this.waveList[i]
+            if (this.waveTime > wave[0]) {
+                for (let j = 0; j < wave[2]; j++) {
+                    let rectIndex = Math.floor(Math.random() * 4)
+                    let tempRect = this.spawnRect[rectIndex]
+                    let tempPos = new Vector2D(Math.random() * tempRect[2] + tempRect[0] + this.player.rect.position.x, Math.random() * tempRect[3] + tempRect[1] + this.player.rect.position.y)
+                    console.log(tempPos)
+                    this.spawnUnit(wave[1], tempPos)
+                }
+                this.waveList.splice(i, 1)
+            }
+        }
+        if (this.waveList.length <= 0) {
+            this.wave += 1
+            this.waveTime = 0
+            if (this.wave in dataWave) {
+                this.waveList = JSON.parse(JSON.stringify(dataWave[this.wave]))
+            }
+        }
     }
 
     spawnUnit(ID, pos) {

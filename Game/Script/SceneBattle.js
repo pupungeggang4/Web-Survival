@@ -12,7 +12,7 @@ class SceneBattle {
     static render(game) {
         Render.init(game.ctx)
         game.field.render(game)
-        Render.strokeRectUI(game.ctx, UI.battle.buttonMenu)
+        Render.drawImageUI(game.ctx, img.button.menu, UI.battle.buttonMenu)
         Render.renderLowerUI(game.ctx, game.field.player)
 
         if (game.state === 'start') {

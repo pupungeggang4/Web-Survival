@@ -93,12 +93,9 @@ class Unit extends Character {
     render(ctx, camera) {
         let hpRatio = this.hp / this.hpMax
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.strokeRect(0, 0, this.canvas.width, this.canvas.height)
+        this.draw(img.sprite.unit[this.ID])
         this.ctx.drawImage(img.lifeBarEmpty40, 0, 0)
         this.ctx.drawImage(img.lifeBarFull40, 0, 0, 40 * hpRatio, 8, 0, 0, 40 * hpRatio, 8)
-        this.ctx.beginPath()
-        this.ctx.arc(this.collisionCircle.radius, this.collisionCircle.radius, this.collisionCircle.radius, 0, Math.PI * 2)
-        this.ctx.stroke()
         Render.renderAtCenterCam(ctx, this.canvas, this.rect, camera)
     }
 }
