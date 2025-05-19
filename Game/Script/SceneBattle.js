@@ -13,6 +13,7 @@ class SceneBattle {
         Render.init(game.ctx)
         game.field.render(game)
         Render.drawImageUI(game.ctx, img.button.menu, UI.battle.buttonMenu)
+        Render.fillTextUI(game.ctx, `Wave: ${game.field.waveNum} Time: ${Math.floor(game.field.waveTime / 60).toString().padStart(2, '0')}:${Math.floor(game.field.waveTime - Math.floor(game.field.waveTime / 60) * 60).toString().padStart(2, '0')}`, UI.battle.textWave)
         Render.renderLowerUI(game.ctx, game.field.player)
 
         if (game.state === 'start') {
@@ -51,6 +52,8 @@ class SceneBattle {
                     game.scene = 'title'
                     game.state = ''
                     game.cursor.title = 0
+                    audio.bg.pause()
+                    audio.bg.currentTime = 0
                 }
             }
         } else if (game.menu === true) {
@@ -61,6 +64,8 @@ class SceneBattle {
                 game.scene = 'title'
                 game.state = ''
                 game.cursor.title = 0
+                audio.bg.pause()
+                audio.bg.currentTime = 0
             }
         }
     }
@@ -86,6 +91,8 @@ class SceneBattle {
                     game.scene = 'title'
                     game.state = ''
                     game.cursor.title = 0
+                    audio.bg.pause()
+                    audio.bg.currentTime = 0
                 }
             }
         } else if (game.menu === true) {
@@ -96,6 +103,8 @@ class SceneBattle {
                 game.scene = 'title'
                 game.state = ''
                 game.cursor.title = 0
+                audio.bg.pause()
+                audio.bg.currentTime = 0
             }
         }
     }

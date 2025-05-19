@@ -11,9 +11,9 @@ class Field {
         this.projectileList = []
         this.effectList = []
 
-        this.wave = 0
-        this.waveTime = 0
-        this.waveList = JSON.parse(JSON.stringify(dataWave[1]))
+        this.waveNum = 1
+        this.waveTime = 20
+        this.wave = JSON.parse(JSON.stringify(dataWave[1]))
         this.spawnRect = [
             [-640, -440, 1280, 80], [640, 360, 1280, 80], [-720, -360, 80, 720], [640, -360, 80, 720]
         ]
@@ -36,10 +36,11 @@ class Field {
     }
 
     waveHandle(game) {
-        this.waveTime += game.delta / 1000
-        for (let i = this.waveList.length - 1; i >= 0; i--) {
-            let wave = this.waveList[i]
-            if (this.waveTime > wave[0]) {
+        this.waveTime -= game.delta / 1000
+        let w = this.wave['unit']
+        for (let i = w.length - 1; i >= 0; i--) {
+            let wave = w[i]
+            if (this.waveTime < wave[0]) {
                 for (let j = 0; j < wave[2]; j++) {
                     let rectIndex = Math.floor(Math.random() * 4)
                     let tempRect = this.spawnRect[rectIndex]
@@ -47,14 +48,14 @@ class Field {
                     console.log(tempPos)
                     this.spawnUnit(wave[1], tempPos)
                 }
-                this.waveList.splice(i, 1)
+                w.splice(i, 1)
             }
         }
-        if (this.waveList.length <= 0) {
-            this.wave += 1
-            this.waveTime = 0
-            if (this.wave in dataWave) {
-                this.waveList = JSON.parse(JSON.stringify(dataWave[this.wave]))
+        if (this.waveTime <= 0) {
+            this.waveNum += 1
+            if (this.waveNum in dataWave) {
+                this.wave = JSON.parse(JSON.stringify(dataWave[this.waveNum]))
+                this.waveTime = this.wave['time']
             }
         }
     }

@@ -34,9 +34,9 @@ class Game {
 
     battleInit() {
         this.scene = 'battle'
-        this.state = 'start'
         this.field = new Field()
         this.field.cameraAdjust()
+        audio.bg.loop = 'true'
         audio.bg.play()
     }
 

@@ -11,14 +11,15 @@ const UI = {
     battle: {
         buttonMenu: [1160, 40, 80, 80],
         buttonBaseAttack: [40, 680, 80, 80],
+        textWave: [480, 64],
 
         lower: {
             iconEnergy: [40, 560],
             textEnergy: [84, 564],
-            energyBarStart: [200, 560],
-            energyBarSize: [20, 40],
+            energyBarStart: [200, 570],
+            energyBarSize: [20, 20],
             textHP: [520, 564],
-            hpBar: [680, 560, 320, 40],
+            hpBar: [680, 570, 320, 20],
             baseAttack: [40, 620, 80, 80],
             hand: [120, 620, 640, 80],
             cardBack: [760, 620, 80, 80],
