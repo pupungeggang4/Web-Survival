@@ -16,8 +16,8 @@ class SceneBattle {
         Render.fillTextUI(game.ctx, `Wave: ${game.field.waveNum} Time: ${Math.floor(game.field.waveTime / 60).toString().padStart(2, '0')}:${Math.floor(game.field.waveTime - Math.floor(game.field.waveTime / 60) * 60).toString().padStart(2, '0')}`, UI.battle.textWave)
         Render.renderLowerUI(game.ctx, game.field.player)
 
-        if (game.state === 'start') {
-            Render.renderStartWindow(game)
+        if (game.state === 'reward') {
+            Render.renderRewardWindow(game)
         }
 
         if (game.state === 'game_over') {
@@ -39,13 +39,21 @@ class SceneBattle {
                 game.menu = true
             }
 
-            if (game.state === 'start') {
-                if (key === 'Enter') {
-                    game.state = ''
-                }
-            } else if (game.state === '') {
+            if (game.state === '') {
                 if (key === '1') {
                     game.field.player.useWeapon(game.field)
+                }
+            } else if (game.state === 'reward') {
+                if (key === '1') {
+                    game.rewardSelected = 0
+                } else if (key === '2') {
+                    game.rewardSelected = 1
+                } else if (key === '3') {
+                    game.rewardSelected = 2
+                } else if (key === 'Enter') {
+                    if (game.rewardSelected != -1) {
+                        game.state = ''
+                    }
                 }
             } else if (game.state === 'game_over') {
                 if (key === 'e') {
@@ -81,12 +89,18 @@ class SceneBattle {
             if (pointInsideRectUI(pos, UI.battle.buttonMenu)) {
                 game.menu = true
             }
-            if (game.state === 'start') {
-                if (pointInsideRectUI(pos, UI.rewardWindow.buttonConfirm)) {
-                    game.state = ''
+            if (game.state === 'reward') {
+                for (let i = 0; i < 3; i++) {
+                    if (pointInsideRectUI(pos, UI.rewardWindow.selectRect[i])) {
+                        game.rewardSelected = i
+                    }
                 }
-            }
-            if (game.state === 'game_over') {
+                if (pointInsideRectUI(pos, UI.rewardWindow.buttonConfirm)) {
+                    if (game.rewardSelected != -1) {
+                        game.state = ''
+                    }
+                }
+            } if (game.state === 'game_over') {
                 if (pointInsideRectUI(pos, UI.gameOverWindow.buttonOK)) {
                     game.scene = 'title'
                     game.state = ''

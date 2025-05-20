@@ -11,11 +11,16 @@ class Render {
         ctx.fillStyle = 'black'
     }
 
-    static renderStartWindow(game) {
+    static renderRewardWindow(game) {
         game.ctx.fillStyle = 'white'
         Render.fillRectUI(game.ctx, UI.rewardWindow.rect)
         Render.strokeRectUI(game.ctx, UI.rewardWindow.rect)
         game.ctx.fillStyle = 'black'
+
+        Render.fillTextUI(game.ctx, `Select Reward`, UI.rewardWindow.textTitle)
+        for (let i = 0; i < 3; i++) {
+            Render.strokeRectUI(game.ctx, UI.rewardWindow.selectRect[i])
+        }
 
         Render.strokeRectUI(game.ctx, UI.rewardWindow.buttonConfirm)
         Render.fillTextUI(game.ctx, 'Confirm', UI.rewardWindow.textConfirm)

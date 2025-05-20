@@ -19,6 +19,7 @@ class Game {
         this.cursor = {
             title: 0
         }
+        this.rewardSelected = 0
 
         this.canvas = document.getElementById('screen')
         this.ctx = this.canvas.getContext('2d')

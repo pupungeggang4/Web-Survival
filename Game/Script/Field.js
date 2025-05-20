@@ -12,7 +12,7 @@ class Field {
         this.effectList = []
 
         this.waveNum = 1
-        this.waveTime = 20
+        this.waveTime = 1
         this.wave = JSON.parse(JSON.stringify(dataWave[1]))
         this.spawnRect = [
             [-640, -440, 1280, 80], [640, 360, 1280, 80], [-720, -360, 80, 720], [640, -360, 80, 720]
@@ -56,6 +56,8 @@ class Field {
             if (this.waveNum in dataWave) {
                 this.wave = JSON.parse(JSON.stringify(dataWave[this.waveNum]))
                 this.waveTime = this.wave['time']
+                game.state = 'reward'
+                game.rewardSelected = -1
             }
         }
     }

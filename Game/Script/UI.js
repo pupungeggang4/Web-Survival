@@ -11,7 +11,7 @@ const UI = {
     battle: {
         buttonMenu: [1160, 40, 80, 80],
         buttonBaseAttack: [40, 680, 80, 80],
-        textWave: [480, 64],
+        textWave: [480, 24],
 
         lower: {
             iconEnergy: [40, 560],
@@ -28,6 +28,10 @@ const UI = {
 
     rewardWindow: {
         rect: [120, 80, 1040, 560],
+        textTitle: [124, 84],
+        selectRect: [
+            [160, 120, 160, 240], [560, 120, 160, 240], [960, 120, 160, 240]
+        ],
         buttonConfirm: [560, 520, 160, 80],
         textConfirm: [568, 544],
     },

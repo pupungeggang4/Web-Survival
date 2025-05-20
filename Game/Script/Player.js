@@ -16,8 +16,8 @@ class Player extends Character {
         this.energyMax = 6
         this.energyGen = 1
         this.attack = 10
-        this.invTime = 0.5
-        this.invTimeMax = 0.5
+        this.invTime = 0.75
+        this.invTimeMax = 0.75
         this.weapon = new Weapon()
         this.weapon.setWeapon(1)
         this.weaponRecharge = 0
