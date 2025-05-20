@@ -17,7 +17,6 @@ class Effect {
         this.canvas.width = this.rect.size.x
         this.canvas.height = this.rect.size.y
         this.direction = direction
-        console.log(this)
     }
 
     handleTick(game) {

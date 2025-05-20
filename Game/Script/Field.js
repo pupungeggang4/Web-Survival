@@ -11,9 +11,9 @@ class Field {
         this.projectileList = []
         this.effectList = []
 
-        this.waveNum = 1
-        this.waveTime = 1
         this.wave = JSON.parse(JSON.stringify(dataWave[1]))
+        this.waveNum = 1
+        this.waveTime = this.wave['time']
         this.spawnRect = [
             [-640, -440, 1280, 80], [640, 360, 1280, 80], [-720, -360, 80, 720], [640, -360, 80, 720]
         ]
@@ -45,7 +45,6 @@ class Field {
                     let rectIndex = Math.floor(Math.random() * 4)
                     let tempRect = this.spawnRect[rectIndex]
                     let tempPos = new Vector2D(Math.random() * tempRect[2] + tempRect[0] + this.player.rect.position.x, Math.random() * tempRect[3] + tempRect[1] + this.player.rect.position.y)
-                    console.log(tempPos)
                     this.spawnUnit(wave[1], tempPos)
                 }
                 w.splice(i, 1)
@@ -58,12 +57,14 @@ class Field {
                 this.waveTime = this.wave['time']
                 game.state = 'reward'
                 game.rewardSelected = -1
+            } else {
+                this.waveNum -= 1
             }
         }
     }
 
     spawnUnit(ID, pos) {
-        if (Object.keys(this.unitList).length < 50) {
+        if (this.unitList.length < 50) {
             let unit = new Unit()
             unit.setUnit(ID)
             unit.rect.position = pos

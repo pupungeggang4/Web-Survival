@@ -11,6 +11,9 @@ let img = {
 
     icon: {
         energy: new Image(),
+        attack: new Image(),
+        life: new Image(),
+        crit: new Image(),
     },
 
     weapon: {
@@ -27,6 +30,7 @@ let img = {
 
         unit: {
             1: new Image(),
+            2: new Image(),
         }
     },
 
@@ -57,6 +61,9 @@ function imageLoad() {
     img.button.menu.src = 'Image/Button/ButtonMenu.png'
 
     img.icon.energy.src = 'Image/Icon/IconEnergy.png'
+    img.icon.life.src = 'Image/Icon/IconLife.png'
+    img.icon.attack.src = 'Image/Icon/IconAttack.png'
+    img.icon.crit.src = 'Image/Icon/IconCrit.png'
 
     for (let i = 0; i < 10; i++) {
         img.weapon[i] = new Image()
@@ -67,7 +74,9 @@ function imageLoad() {
     img.sprite.player['right'].src = 'Image/Sprite/SpritePlayerRight.png'
     img.sprite.player['up'].src = 'Image/Sprite/SpritePlayerUp.png'
     img.sprite.player['down'].src = 'Image/Sprite/SpritePlayerDown.png'
+
     img.sprite.unit[1].src = 'Image/Sprite/SpriteMonster001.png'
+    img.sprite.unit[2].src = 'Image/Sprite/SpriteMonster002.png'
 
     img.effect.attack['left'].src = 'Image/Effect/EffectAttackLeft.png'
     img.effect.attack['right'].src = 'Image/Effect/EffectAttackRight.png'

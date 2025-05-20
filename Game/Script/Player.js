@@ -16,6 +16,8 @@ class Player extends Character {
         this.energyMax = 6
         this.energyGen = 1
         this.attack = 10
+        this.crit = 10
+        this.critBonus = 100
         this.invTime = 0.75
         this.invTimeMax = 0.75
         this.weapon = new Weapon()
@@ -83,7 +85,11 @@ class Player extends Character {
                 for (let i = 0; i < field.unitList.length; i++) {
                     let unit = field.unitList[i]
                     if (Physics2D.RectCircleCollide(attackRect, unit.collisionCircle)) {
-                        unit.takeDamage(this.attack * this.weapon.action[2] + this.weapon.action[3])
+                        let damage = this.attack * this.weapon.action[2] + this.weapon.action[3]
+                        if (Math.random() * 100 < this.crit) {
+                            damage *= (1 + this.critBonus / 100)
+                        }
+                        unit.takeDamage(damage)
                     }
                 }
             }

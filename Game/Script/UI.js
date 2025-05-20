@@ -18,11 +18,16 @@ const UI = {
             textEnergy: [84, 564],
             energyBarStart: [200, 570],
             energyBarSize: [20, 20],
-            textHP: [520, 564],
+            iconHP: [480, 560],
+            textHP: [524, 564],
             hpBar: [680, 570, 320, 20],
             baseAttack: [40, 620, 80, 80],
             hand: [120, 620, 640, 80],
             cardBack: [760, 620, 80, 80],
+            iconAttack: [880, 620],
+            textAttack: [924, 624],
+            iconCrit: [880, 660],
+            textCrit: [924, 664],
         }
     },
 

@@ -38,6 +38,7 @@ class Render {
         }
         
         ctx.fillStyle = 'Black'
+        Render.drawImageUI(ctx, img.icon.life, UI.battle.lower.iconHP)
         Render.fillTextUI(ctx, `${Math.floor(player.hp)}/${player.hpMax}`, UI.battle.lower.textHP)
 
         ctx.fillStyle = 'Green'
@@ -58,6 +59,12 @@ class Render {
         ctx.fillStyle = 'gray'
         let rechargeWidth = UI.battle.lower.baseAttack[2] * player.weaponRecharge / player.weapon.recharge
         ctx.fillRect(UI.battle.lower.baseAttack[0], UI.battle.lower.baseAttack[1], rechargeWidth, UI.battle.lower.baseAttack[3])
+
+        ctx.fillStyle = 'black'
+        Render.drawImageUI(ctx, img.icon.attack, UI.battle.lower.iconAttack)
+        Render.fillTextUI(ctx, `${player.attack}`, UI.battle.lower.textAttack)
+        Render.drawImageUI(ctx, img.icon.crit, UI.battle.lower.iconCrit)
+        Render.fillTextUI(ctx, `${Math.floor(player.crit)}%`, UI.battle.lower.textCrit)
     }
 
     static renderGameOverWindow(ctx) {
